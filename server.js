@@ -1,7 +1,7 @@
 const express = require('express')
 const dotenvfile = require('dotenv');
+const cors = require('cors');
 dotenvfile.config();
-const app = express();
 const PORT = 3500;
 app.use(express.json());
 const mongoose = require('mongoose');
@@ -13,6 +13,9 @@ const SingleHotelRouter = require('./router/singleHotelRouter');
 const authRouter = require('./router/user.authRouter');
 const wishlistRouter = require('./router/wishlistRouter');
 const connectDB = require('./config/dbconfig');
+const app = express();
+
+app.use(cors());
 
 app.get('/',(req,res)=>{
     res.send("Hello user server is Started");
