@@ -3,7 +3,6 @@ const dotenvfile = require('dotenv');
 const cors = require('cors');
 dotenvfile.config();
 const PORT = 3500;
-app.use(express.json());
 const mongoose = require('mongoose');
 const hostelRouter = require('./router/hotelRouter');
 const categoryRouter = require('./router/categoryRouter');
@@ -14,8 +13,9 @@ const authRouter = require('./router/user.authRouter');
 const wishlistRouter = require('./router/wishlistRouter');
 const connectDB = require('./config/dbconfig');
 const app = express();
-
 app.use(cors());
+app.use(express.json());
+
 
 app.get('/',(req,res)=>{
     res.send("Hello user server is Started");
