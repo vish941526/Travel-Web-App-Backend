@@ -6,8 +6,8 @@ const categories = require('../dataBase/categories');
 
 router.route('/').post( async(req,res)=>{
     try {
-        const categories = await Category.insertMany(categories.data);
-        res.json(categories.data);
+        const categoriesInDb = await Category.insertMany(categories.data);
+        res.json(categoriesInDb);
     } catch (err) {
         console.log(err);
         res.json({ message: "Could not add categories to DB"});
